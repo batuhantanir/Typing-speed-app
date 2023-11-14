@@ -3,11 +3,14 @@ import { generate } from "random-words";
 
 const initialState = {
   value: [],
-  time: 60,
+  time: 2,
   score: 0,
+  correctWord : 0,
+  wrongWord : 0,
   index: 0,
   isOkey: null,
   isStart: false,
+  isGameover: false,
 };
 
 export const selectRandomWord = (state) => state.randomWords.value;
@@ -41,16 +44,28 @@ export const RandomWordSlice = createSlice({
     start: (state) => {
       state.isStart = true;
     },
-    timeSet : (state) => {
+    timeSet: (state) => {
       if (state.isStart && state.time > -1) state.time -= 1;
       if (state.time == 0) {
-        clearInterval(timeSet)
+        clearInterval(timeSet);
         state.isStart = false;
-      };
+        state.isGameover = true;
+      }
+    },
+    reload: (state) => {
+      state.isStart = false;
+      state.time = 60;
+      state.score = 0;
+      state.index = 0;
+      state.isOkey = null;
+      state.isGameover = false;
+      state.correctWord = 0;
+      state.wrongWord = 0;
     },
   },
 });
 
-export const { randomWord, isOkey, start, timeSet} = RandomWordSlice.actions;
+export const { randomWord, isOkey, start, timeSet, reload } =
+  RandomWordSlice.actions;
 
 export default RandomWordSlice.reducer;

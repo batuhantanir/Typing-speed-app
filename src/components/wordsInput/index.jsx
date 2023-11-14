@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   isOkey,
@@ -10,6 +10,7 @@ import {
   start,
   timeSet,
 } from "../../redux/RandomWordSlice";
+import ReloadBtn from "../reloadBtn";
 
 const handleInput = (e, words, index, i, change) => {
   while (i < e.target.value.length && words[index]) {
@@ -33,25 +34,33 @@ const WordsInput = () => {
   const index = useSelector(selectIndex);
   const isStart = useSelector(selectIsStart);
   const time = useSelector(selectTime);
+  const [value, setValue] = useState("");
   const i = 0;
   let change = null;
 
   useEffect(() => {
     dispatch(isOkey(change));
-    if (isStart == true && time > 0) setInterval(()=> dispatch(timeSet()),1000);
+    if (isStart == true && time > 0)
+      setInterval(() => dispatch(timeSet()), 1000);
   }, [change, dispatch, isStart]);
 
   return (
-    <div className="flex  gap-x-4">
+    <div className="flex  gap-x-4 justify-center items-center bg-[#ad575755] w-[40%] py-1 rounded">
       <input
+        className="py-1 px-2 border border-black rounded"
         onChange={async (e) => {
+          setValue(e.target.value);
           await (change = handleInput(e, words, index, i, change));
           dispatch(isOkey(change));
           isStart ? <></> : dispatch(start());
         }}
+        value={value}
         type="text"
       />
-      <p className="border px-2 py-1 bg-slate-700 text-white">{time}</p>
+      <p className="border text-center w-[36px]  py-1 bg-slate-700 text-white rounded">
+        {time}
+      </p>
+      <ReloadBtn setInputValue={setValue}/>
     </div>
   );
 };
