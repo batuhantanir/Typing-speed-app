@@ -45,7 +45,7 @@ const WordsInput = () => {
   }, [change, dispatch, isStart]);
 
   return (
-    <div className="flex  gap-x-4 justify-center items-center bg-[#ad575755] w-[40%] py-1 rounded">
+    <div className="flex  gap-x-4 justify-center items-center bg-[#ad575755] w-[80%] py-1 rounded lg:w-[40%]">
       <input
         className="py-1 px-2 border border-black rounded"
         onChange={async (e) => {
@@ -57,7 +57,7 @@ const WordsInput = () => {
         value={value}
         type="text"
       />
-      <p className="border text-center w-[36px]  py-1 bg-slate-700 text-white rounded">
+      <p className="border text-center w-[36px] py-1 bg-slate-700 text-white rounded">
         {time}
       </p>
       <ReloadBtn setInputValue={setValue}/>

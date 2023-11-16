@@ -18,7 +18,7 @@ const WordsBox = () => {
   //   console.log(data);
 
   return (
-    <div className="h-[70px] w-[40%] overflow-hidden bg-slate-50 rounded border border-black ">
+    <div className="h-[70px] w-[80%] overflow-hidden bg-slate-50 rounded border border-black lg:w-[40%]">
       <div className="flex flex-wrap justify-center font-serif">
         {data.map((item, index) => (
           <Word

@@ -3,7 +3,7 @@ import { generate } from "random-words";
 
 const initialState = {
   value: [],
-  time: 2,
+  time: 60,
   score: 0,
   correctWord : 0,
   wrongWord : 0,
@@ -16,9 +16,12 @@ const initialState = {
 export const selectRandomWord = (state) => state.randomWords.value;
 export const selectTime = (state) => state.randomWords.time;
 export const selectScore = (state) => state.randomWords.score;
+export const selectCorrectWord = (state) => state.randomWords.correctWord;
+export const selectWrongWord = (state) => state.randomWords.wrongWord;
 export const selectIndex = (state) => state.randomWords.index;
 export const selectIsOkey = (state) => state.randomWords.isOkey;
 export const selectIsStart = (state) => state.randomWords.isStart;
+export const selectIsGameover = (state) => state.randomWords.isGameover;
 
 export const generateRandomWord = () => {
   let wordArr = generate(1000);

@@ -7,11 +7,11 @@ const ReloadBtn = ({ setInputValue }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className="text-xl border px-2 py-[6px] bg-cyan-500 text-white cursor-pointer rounded hover:scale-105 active:scale-90"
+      className="flex justify-center text-xl border px-2 py-[6px] bg-cyan-500 text-white cursor-pointer rounded hover:scale-105 active:scale-90"
       onClick={() => {
         dispatch(reload());
         dispatch(randomWord());
-        setInputValue("");
+        setInputValue &&  setInputValue("");
       }}
     >
       <IoMdRepeat />
