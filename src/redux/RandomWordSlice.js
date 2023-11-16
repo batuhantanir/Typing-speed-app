@@ -11,6 +11,7 @@ const initialState = {
   isOkey: null,
   isStart: false,
   isGameover: false,
+  i : 0,
 };
 
 export const selectRandomWord = (state) => state.randomWords.value;
@@ -22,6 +23,7 @@ export const selectIndex = (state) => state.randomWords.index;
 export const selectIsOkey = (state) => state.randomWords.isOkey;
 export const selectIsStart = (state) => state.randomWords.isStart;
 export const selectIsGameover = (state) => state.randomWords.isGameover;
+export const selectI = (state) => state.randomWords.i;
 
 export const generateRandomWord = () => {
   let wordArr = generate(1000);
@@ -65,10 +67,14 @@ export const RandomWordSlice = createSlice({
       state.correctWord = 0;
       state.wrongWord = 0;
     },
+    correctWord: (state) => {
+      state.correctWord += 1;
+      state.index += 1;
+    },
   },
 });
 
-export const { randomWord, isOkey, start, timeSet, reload } =
+export const { randomWord, isOkey, start, timeSet, reload, correctWord } =
   RandomWordSlice.actions;
 
 export default RandomWordSlice.reducer;

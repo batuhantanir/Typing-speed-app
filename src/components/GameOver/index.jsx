@@ -11,7 +11,9 @@ const GameOver = () => {
   const score = useSelector(selectScore);
   const correct = useSelector(selectCorrectWord);
   const wrong = useSelector(selectWrongWord);
-  console.log(Math.round((correct / (correct + wrong)) * 100));
+
+  // console.log(Math.round((correct / (correct + wrong)) * 100));
+
   return (
     <div className="flex flex-col border rounded bg-[#f7f7f7] text-black w-[250px] min-h-fit">
       <h1 className="text-lg text-white font-bold px-3 py-1 bg-[#4C7E9F] rounded-t">
