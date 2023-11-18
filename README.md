@@ -1,5 +1,7 @@
 # Typing speed app
 
+ I wanted to share with you my small typing speed app project that I developed using React redux. My goal was to get a better understanding of state management with redux. At the same time, I tried to improve my use of tailwindcss framework. As a result, I created such an application.
+
 ## Start Page
 > The game starts as soon as a word is entered into the input.
 
